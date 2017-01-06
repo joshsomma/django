@@ -2,8 +2,20 @@
 
 <h1>{{ album.album_title }}</h1>
 <h3>{{ album.artist }}</h3>
-<ul>
+
+{% if error_message %}
+  <p><strong>{{ error message }}</strong></p>
+{% endif %}
+
+<form action="{% url 'music:favourite' album.id %}" method="post">
+  {% csrf_token %}
+  {% for song in album.song_set.all %}
+    <input type="radio" id="">
+  {% endfor %}
+</form>
+
+<!-- <ul>
   {% for song in album.song_set.all %}
   <li>{{ song.song_title}} - {{ song.file_type }}</li>
   {% endfor %}
-</ul>
+</ul> -->
