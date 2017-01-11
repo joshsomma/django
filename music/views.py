@@ -1,24 +1,16 @@
-#from django.http import Http404
-#from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from .models import Album, Song
 
 def index(request):
     #connect to dbase
     all_albums = Album.objects.all()
-    #create html tmpl
-    #template = loader.get_template('music/index.html')
-    #context = {'all_albums' : all_albums}
-    #return HttpResponse(template.render(context,request))
+    #use render to get list of all albums
     return render(request,'music/index.html', {'all_albums' : all_albums})
 
 def detail(request, album_id):
-    #return HttpResponse("<h2>Details for Album id: " + str(album_id) + "</h2>")
+    #check and see if an album w id is available or return 404 msg
     album = get_object_or_404(Album, pk=album_id)
-    #try:
-        #album = Album.objects.get(pk=album_id)
-    #except Album.DoesNotExist:
-        #raise Http404("Album does not exist")
+    #use render to get album details
     return render(request,'music/detail.html', {'album' : album})
 
 def favourite (request,album_id):
