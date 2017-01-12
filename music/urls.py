@@ -11,6 +11,9 @@ urlpatterns = [
     # /music/71/
     url(r'^(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name="detail"),
 
+    #/music/album/add
+    url(r'album/add/$',views.AlbumCreate.as_view(), name="album-add"),
+
     # /music/71/favourite deleted per lesson 28
     # url(r'^(?P<album_id>[0-9]+)/favourite/$', views.favourite, name="favourite"),
 ]
